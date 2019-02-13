@@ -65,7 +65,10 @@ public class Main {
     public static void usingMethodReferences(){//인자의 타입은 첫번째에서 정해진다는 가정하에 타입은 따로 적어주지 않음. 한줄짜리 코드는 중괄호 제외하고 코드부분만
         List<Book> books = Books.all();
         //Collections.sort(books, (b1, b2) -> b1.getTitle().compareTo(b2.getTitle()));
-        Collections.sort(books, Comparator.comparing(book -> book.getTitle()));
+        //Collections.sort(books, Comparator.comparing(book -> book.getTitle()));
+        Collections.sort(books,Comparator.comparing(Book::getTitle));
+        //매 객체 마다 Compartor.comparing으로 비교를 하는데, Book클래스 안에 getTitle함수를 써서 비교해라
+
         books.forEach((book -> System.out.println(book)));
         //Java 8 부터 Collection 안에 foreach, consumer 메소드가 추가됨.
 

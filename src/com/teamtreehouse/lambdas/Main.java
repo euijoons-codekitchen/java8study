@@ -49,14 +49,23 @@ public class Main {
 //
 //
 //    }
-    public static void usinglLamdasInShortForm(){//인자의 타입은 첫번째에서 정해진다는 가정하에 타입은 따로 적어주지 않음. 한줄짜리 코드는 중괄호 제외하고 코드부분만
-        List<Book> books = Books.all();
-        Collections.sort(books, (b1, b2) -> b1.getTitle().compareTo(b2.getTitle()));
-
+//    public static void usinglLamdasInShortForm(){//인자의 타입은 첫번째에서 정해진다는 가정하에 타입은 따로 적어주지 않음. 한줄짜리 코드는 중괄호 제외하고 코드부분만
+//        List<Book> books = Books.all();
+//        Collections.sort(books, (b1, b2) -> b1.getTitle().compareTo(b2.getTitle()));
 //
-//        for (Book book : books){//
-//            System.out.println(book.toString());
-//        }
+////
+////        for (Book book : books){//
+////            System.out.println(book.toString());
+////        }
+//        books.forEach((book -> System.out.println(book)));
+//        //Java 8 부터 Collection 안에 foreach, consumer 메소드가 추가됨.
+//
+//    }
+
+    public static void usingMethodReferences(){//인자의 타입은 첫번째에서 정해진다는 가정하에 타입은 따로 적어주지 않음. 한줄짜리 코드는 중괄호 제외하고 코드부분만
+        List<Book> books = Books.all();
+        //Collections.sort(books, (b1, b2) -> b1.getTitle().compareTo(b2.getTitle()));
+        Collections.sort(books, Comparator.comparing(book -> book.getTitle()));
         books.forEach((book -> System.out.println(book)));
         //Java 8 부터 Collection 안에 foreach, consumer 메소드가 추가됨.
 
@@ -64,7 +73,7 @@ public class Main {
     public static void main(String[] args) {
         // write your code here
         // usinglLamdasInLongForm();
-        usinglLamdasInShortForm();
+        //usinglLamdasInShortForm();
 
     }
 }
